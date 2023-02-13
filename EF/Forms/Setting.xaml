@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EF.Forms"
         mc:Ignorable="d"
-        Title="Setting" Height="600" Width="800" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner" Loaded="OnLoad">
+        Title="Setting" Height="600" Width="800" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner" Loaded="OnLoad" BorderBrush="Black" BorderThickness="1">
     
     <Grid>
-        <Grid ShowGridLines="True" Margin="10">
+        <Grid ShowGridLines="False" Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -28,9 +28,74 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            
-            <Button x:Name="btnClose" Content="닫기" FontSize="20" Margin="10, 15, 10, 15" Grid.Row="7" Grid.Column="6"/>
+            <TabControl Grid.Row="0" Grid.RowSpan="7" Grid.Column="0" Grid.ColumnSpan="7" BorderBrush="Black" BorderThickness="1" >
+                <TabItem Header="정보" FontSize="13" FontWeight="Bold" Width="193"  Height="30" BorderBrush="Black" BorderThickness="1">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="상호명" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="1" Margin="0, 3, 0, 3" />
+                        <TextBox x:Name="txtMutual" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 6, 0, 6" BorderBrush="Black" BorderThickness="1"/>
+                        <Label Content="주소" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1" Margin="0, 3, 0, 3" />
+                        <TextBox x:Name="txtAddress" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 6, 0, 6" BorderBrush="Black" BorderThickness="1"/>
+                        <Label Content="대표자" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="1" Margin="0, 3, 0, 3" />
+                        <TextBox x:Name="txtRepresentativeNm" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 6, 0, 6" BorderBrush="Black" BorderThickness="1"/>
+                        <Label Content="사업자번호" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0, 3, 0, 3" />
+                        <TextBox x:Name="txtBusinessNum" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 6, 0, 6" BorderBrush="Black" BorderThickness="1"/>
+                        <Label Content="전화번호" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="1" Margin="0, 3, 0, 3" />
+                        <TextBox x:Name="txtPhoneNum" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 6, 0, 6" BorderBrush="Black" BorderThickness="1"/>
+                        <Label Content="주차장명" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Grid.Row="6" Grid.Column="1" Margin="0, 3, 0, 3" />
+                        <TextBox x:Name="txtParkNm" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 6, 0, 6" BorderBrush="Black" BorderThickness="1"/>
+                        <Label Content="주차장코드" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"  Margin="0, 3, 0, 3" />
+                        <TextBox x:Name="txtParcCd" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 6, 0, 6" BorderBrush="Black" BorderThickness="1"/>
+                        <Label Content="납부은행" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Grid.Row="8" Grid.Column="1" Margin="0, 3, 0, 3" />
+                        <TextBox x:Name="txtBankNm" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 6, 0, 6" BorderBrush="Black" BorderThickness="1"/>
+                        <Label Content="주차장 총면수" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="0, 3, 0, 3" />
+                        <TextBox x:Name="txtParktotalSpace" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 6, 0, 6" BorderBrush="Black" BorderThickness="1"/>
+                        <Label Content="출차대기(분)" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="0, 3, 0, 3" />
+                        <TextBox x:Name="txtPrevWait" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 6, 0, 6" BorderBrush="Black" BorderThickness="1"/>
+                        <Label Content="추가 주차공간" FontSize="15" FontWeight="Bold" HorizontalAlignment="Right" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="0, 3, 0, 3" />
+                        <TextBox x:Name="txtParkExSpace" Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2" Margin="0, 6, 0, 6" BorderBrush="Black" BorderThickness="1"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="요금" Width="193" FontSize="13" FontWeight="Bold" Height="30" BorderBrush="Black" BorderThickness="1">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="장비" Width="193" FontSize="13" FontWeight="Bold"  Height="30" BorderBrush="Black" BorderThickness="1">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="운영" Width="193" FontSize="13" FontWeight="Bold"  Height="30" BorderBrush="Black" BorderThickness="1">
+                    <Grid Background="#FFE5E5E5">
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <Button x:Name="btnClose" Content="닫기" FontSize="20" FontWeight="Bold" Margin="10, 15, 10, 15" Grid.Row="7" Grid.Column="6" BorderBrush="Black" BorderThickness="1"/>
             
         </Grid>
+        
     </Grid>
 </Window>
