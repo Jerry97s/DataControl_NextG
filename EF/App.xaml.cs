@@ -18,12 +18,14 @@ namespace EF
     {
         private void Load(object sender, StartupEventArgs args)
         {
-            Main main = new Main();
-            main.Show();
+            
 
             CheckDir();
 
             LoadSetting();
+
+            Main main = new Main();
+            main.Show();
         }
         private void CheckDir()
         {
