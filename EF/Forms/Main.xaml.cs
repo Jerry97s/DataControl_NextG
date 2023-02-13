@@ -76,7 +76,7 @@ namespace EF.Forms
             //MsgBox.WindowStartupLocation = WindowStartupLocation.Manual;
             //MsgBox.LocationChanged
             //MsgBox.Poi
-            MsgBox.SetMsg("종료하시겠습니까?", System.Windows.Forms.MessageBoxButtons.YesNo, 15, 9999);
+            MsgBox.SetMsg("종료하시겠습니까?", System.Windows.Forms.MessageBoxButtons.YesNo, 5, 9999);
             MsgBox.ShowDialog();
             if (MsgBox.eDefaultRs == System.Windows.Forms.DialogResult.Yes)
             {

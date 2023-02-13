@@ -94,7 +94,7 @@ namespace EF.Forms
         /// <param name="MsgType">
         /// 9999 => 종료
         /// </param>
-        public void SetMsg(string sMsg, MessageBoxButtons btn = MessageBoxButtons.YesNo, int nTime = 10, int MsgType = 0, DialogResult eDefaultRes =  System.Windows.Forms.DialogResult.Yes)
+        public void SetMsg(string sMsg, MessageBoxButtons btn = MessageBoxButtons.YesNo, int nTime = 10, int MsgType = 0)
         {
             //string sSetMsg = "";
             sOrginMsg = sMsg;
@@ -108,7 +108,7 @@ namespace EF.Forms
                 lblMsg.Content = sOrginMsg + "\r\n" + timeTxt;
             }
 
-            eDefaultRs = eDefaultRes;
+            //eDefaultRs = eDefaultRes;
 
             if (btn == MessageBoxButtons.YesNo)
             {
