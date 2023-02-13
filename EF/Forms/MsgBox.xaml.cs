@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 
@@ -70,14 +68,20 @@ namespace EF.Forms
             }
             else
             {
-                Clear();
+                if (eDefaultRs != System.Windows.Forms.DialogResult.Yes)
+                    Clear();
             }
         }
 
-        public void Clear()
+        public void Clear(bool bClose = false)
         {
             nShowTime = 0;
             pTimer.Stop();
+            if(bClose)
+            {
+                pTimer.Dispose();
+                pTimer = null;
+            }
             Close();
         }
 
@@ -151,10 +155,12 @@ namespace EF.Forms
 
         private void btnClick(object sender, RoutedEventArgs e)
         {
+            bool bClose = false;
             switch (((System.Windows.Controls.Button)sender).Name)
             {
                 case "btnLeft":
                     eDefaultRs = System.Windows.Forms.DialogResult.Yes;
+                    bClose = true;
                     break;
                 case "btnRight":
                     eDefaultRs = System.Windows.Forms.DialogResult.No;
@@ -162,7 +168,7 @@ namespace EF.Forms
                 default:
                     break;
             }
-            Clear();
+            Clear(bClose);
 
 
         }
