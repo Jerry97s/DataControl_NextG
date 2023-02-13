@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace EF.Forms
 {
@@ -22,6 +23,56 @@ namespace EF.Forms
         public Setting()
         {
             InitializeComponent();
+        }
+
+        public void OnLoad(object sender, RoutedEventArgs e)
+        {
+            //WindowStartupLocation wsl = new WindowStartupLocation();
+            //wsl = new Point(10, 10);
+
+            btnClose.Click += btnClick_Setting;
+
+        }
+
+        private void btnClick_Setting(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.Invoke(DispatcherPriority.Normal
+                , new Action(delegate
+                {
+                    switch(((Button)sender).Name)
+                    {
+                        case "btnClose":
+                            Close();
+                            break;
+                        default:
+                            break;
+                    }
+                    
+                }));
+        }
+
+        delegate void FHideWindow();
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+
+        {
+
+            e.Cancel = true;
+
+            Dispatcher.BeginInvoke(DispatcherPriority.Normal, new
+
+            FHideWindow(_HideThisWindow));
+
+        }
+
+
+
+        void _HideThisWindow()
+
+        {
+
+            this.Hide();
+
         }
     }
 }

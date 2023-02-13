@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:EF.Forms"
         mc:Ignorable="d"
         Title="Main" Height="768" Width="1024"
-        Loaded="OnLoad" Closing="Window_Closing">
+        Loaded="OnLoad" Closing="Window_Closing" ResizeMode="NoResize" WindowStyle="None">
     <Grid>
         <Grid ShowGridLines="True" Margin="10">
             <Grid.RowDefinitions>
@@ -15,25 +15,23 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
-            </Grid.RowDefinitions>
+            </Grid.RowDefinitions>  
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Image x:Name="btnSearchIO"  Grid.Row="0" Grid.Column="0" Source="Search_EF.png" MouseLeftButtonDown="btnSearchIO_MouseLeftButtonDown"/>
-            <Image x:Name="btnSearchREG"  Grid.Row="0" Grid.Column="1" Source="Search_REG.png" MouseLeftButtonDown="btnSearchREG_MouseLeftButtonDown"/>
-            <Image x:Name="btnSetting"  Grid.Row="0" Grid.Column="2" Source="Setting.png" MouseLeftButtonDown="btnSetting_MouseLeftButtonDown"/>
-            <Image x:Name="btnClose"  Grid.Row="0" Grid.Column="3" Source="Close.png" MouseLeftButtonDown="btnClose_MouseLeftButtonDown"/>
+            <Image x:Name="btnSearchIO"  Grid.Row="0" Grid.Column="0" Source="Search_EF.png" />
+            <Image x:Name="btnSearchREG"  Grid.Row="0" Grid.Column="1" Source="Search_REG.png" />
+            <Image x:Name="btnSetting"  Grid.Row="0" Grid.Column="2" Source="Setting.png" />
+            <Image x:Name="btnClose"  Grid.Row="0" Grid.Column="3" Source="Close.png" />
             <ListView Name="lsvIOStr"
                       Grid.Row="1"
                       Grid.ColumnSpan="2"
                       Grid.Column="0"
                       Grid.RowSpan="4"
                       Margin="10, 40, 10, 10"
-                      SelectionChanged="lsvIOStr_SelectionChanged"
-                      
                       IsSynchronizedWithCurrentItem="False">
                 <ListView.View>
                 <GridView>

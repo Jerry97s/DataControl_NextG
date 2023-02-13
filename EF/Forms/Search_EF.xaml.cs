@@ -17,9 +17,9 @@ namespace EF.Forms
     /// <summary>
     /// Search_EF.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class Search_EF : Window
+    public partial class Search_IO : Window
     {
-        public Search_EF()
+        public Search_IO()
         {
             InitializeComponent();
         }

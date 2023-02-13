@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Navigation;
+using System.Windows.Threading;
 
 namespace EF.Forms
 {
@@ -21,7 +22,10 @@ namespace EF.Forms
     public partial class Main : Window
     {
         List<Lsv_Param> lstLsvParam = null;
-        MsgBox MsgBox = new MsgBox();
+        MsgBox Window_MsgBox = null;
+        Setting Window_Setting = null;
+        Search_REG Window_Search_REG = null;
+        Search_IO Window_Search_IO = null;
         public Main()
         {
             InitializeComponent();
@@ -29,60 +33,64 @@ namespace EF.Forms
             lstLsvParam = new List<Lsv_Param>();
             lstLsvParam.Add(new Lsv_Param() { sNowTime = "", sDiv1 = "", sDiv2 = "", sDetail = "" });
             lsvIOStr.ItemsSource = lstLsvParam;
+           
         }
 
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
-            
-        }
+            Load_Form();
 
-        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+            btnSearchIO.MouseLeftButtonDown += btnClick_Main;
+            btnSearchREG.MouseLeftButtonDown += btnClick_Main;
+            btnSetting.MouseLeftButtonDown += btnClick_Main;
+            btnClose.MouseLeftButtonDown += btnClick_Main;
+
+        }
+        private void Load_Form()
         {
+            Window_MsgBox = new MsgBox();
+            Window_Setting = new Setting();
+            Window_Search_REG = new Search_REG();
+            Window_Search_IO = new Search_IO();
 
+            Window_MsgBox.Owner = Application.Current.MainWindow;
+            Window_Setting.Owner = Application.Current.MainWindow;
+            Window_Search_REG.Owner = Application.Current.MainWindow;
+            Window_Search_IO.Owner = Application.Current.MainWindow;
         }
 
-        private void lsvServerStr_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void btnClick_Main(object sender, MouseButtonEventArgs e)
         {
-
+           Dispatcher.Invoke(DispatcherPriority.Normal
+                , new Action(delegate
+                {
+                    switch (((Image)sender).Name)
+                    {
+                        case "btnSearchIO":
+                            Window_Search_IO.ShowDialog();
+                            break;
+                        case "btnSearchREG":
+                            Window_Search_REG.ShowDialog();
+                            break;
+                        case "btnSetting":
+                            Window_Setting.ShowDialog();
+                            break;
+                        case "btnClose":
+                            Window_MsgBox.SetMsg("종료하시겠습니까?", System.Windows.Forms.MessageBoxButtons.YesNo, 5, 9999);
+                            
+                            Window_MsgBox.ShowDialog();
+                            if (Window_MsgBox.eDefaultRs == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                FormClosing();
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }));
         }
 
-        private void lsvIOStr_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void btnSearchIO_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Search_EF Search_EF = new Search_EF();
-            Search_EF.ShowDialog();
-        }
-
-        private void btnSearchREG_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Search_REG Search_REG = new Search_REG();
-            Search_REG.ShowDialog();
-        }
-
-        private void btnSetting_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Setting Set = new Setting();
-            Set.ShowDialog();
-        }
-
-        private void btnClose_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            //Point pParentPoint = this.Parent.
-            //MsgBox.WindowStartupLocation = WindowStartupLocation.Manual;
-            //MsgBox.LocationChanged
-            //MsgBox.Poi
-            MsgBox.SetMsg("종료하시겠습니까?", System.Windows.Forms.MessageBoxButtons.YesNo, 5, 9999);
-            MsgBox.ShowDialog();
-            if (MsgBox.eDefaultRs == System.Windows.Forms.DialogResult.Yes)
-            {
-                FormClosing();
-            }
-        }
 
         private void FormClosing()
         {

@@ -34,6 +34,9 @@ namespace EF.Forms
             pTimer = new System.Timers.Timer();
             pTimer.Interval = 1000;
             pTimer.Elapsed += new System.Timers.ElapsedEventHandler(ShowTimer);
+
+            btnLeft.Click += btnClick;
+            btnRight.Click += btnClick;
         }
 
         public void OnLoad(object sender, RoutedEventArgs e)
@@ -41,13 +44,8 @@ namespace EF.Forms
             //WindowStartupLocation wsl = new WindowStartupLocation();
             //wsl = new Point(10, 10);
 
-            
-            pTimer.Start();
-
             eDefaultRs = System.Windows.Forms.DialogResult.None;
 
-            btnLeft.Click += btnClick;
-            btnRight.Click += btnClick;
         }
 
         private void ShowTimer(object sender, EventArgs e)
@@ -64,7 +62,8 @@ namespace EF.Forms
             nNowTime++;
             if (nShowTime > nNowTime)
             {
-                lblMsg.Content = sOrginMsg + "\r\n" + "(" + (nShowTime - nNowTime).ToString() + ")";
+                lblMsg_Detail.Content = sOrginMsg;
+                lblMsg_Timer.Content = "(" + (nShowTime - nNowTime).ToString() + ")";
             }
             else
             {
@@ -105,7 +104,9 @@ namespace EF.Forms
             {
                 nShowTime = nTime;
                 string timeTxt = $"({nShowTime.ToString()})";
-                lblMsg.Content = sOrginMsg + "\r\n" + timeTxt;
+                //lblMsg.Content = sOrginMsg + "\r\n" + timeTxt;
+                lblMsg_Detail.Content = sOrginMsg;
+                lblMsg_Timer.Content = "(" + (nShowTime - nNowTime).ToString() + ")";
             }
 
             //eDefaultRs = eDefaultRes;
@@ -119,38 +120,6 @@ namespace EF.Forms
 
             pTimer.Start();
 
-        }
-
-        private void btnLeft_Click(object sender, RoutedEventArgs e)
-        {
-            //switch (sOrginType)
-            //{
-            //    case 0:
-            //        break;
-            //    case 9999:
-            //        //this.DialogResult = true;
-            //        Clear();
-            //        FormClosing();
-            //        break;
-            //    default:
-            //        break;
-            //}
-
-        }
-
-        private void btnRight_Click(object sender, RoutedEventArgs e)
-        {
-            //switch (sOrginType)
-            //{
-            //    case 0:
-            //        break;
-            //    case 9999:
-            //        Clear();
-                    
-            //        break;
-            //    default:
-            //        break;
-            //}
         }
 
         private void btnClick(object sender, RoutedEventArgs e)
@@ -196,11 +165,6 @@ namespace EF.Forms
 
             this.Hide();
 
-        }
-
-        private void FormClosing()
-        {
-            App.Current.Shutdown();
         }
 
     }

@@ -7,11 +7,29 @@
         mc:Ignorable="d"
         Title="MsgBox" Height="301.838" Width="353.39"
         Loaded="OnLoad"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize" WindowStyle="None">
 
     <Grid>
-        <Label x:Name="lblMsg" Content="Label" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnLeft" IsDefault="True" Content="Yes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,65,0,0" Click="btnLeft_Click"/>
-        <Button x:Name="btnRight" IsDefault="True" Content="No" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="95,65,0,0" RenderTransformOrigin="-0.075,-2.989" Click="btnRight_Click"/>
+        <Grid ShowGridLines="True" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <!--<Label x:Name="lblMsg" Content="Label" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Margin="0, 0, 0, 0"  Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4"/>-->
+            <Label x:Name="lblMsg_Detail" Content="Label" FontSize="30px" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Margin="0, 0, 0, 0"  Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="4"/>
+            <Label x:Name="lblMsg_Timer" Content="Label" FontSize="30px" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Margin="0, 0, 0, 0"  Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="4"/>
+            <Button x:Name="btnLeft" IsDefault="True" Content="Yes"  Margin="15" Grid.Row="3" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnRight" IsDefault="True" Content="No"  Margin="15" Grid.Row="3" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2"/>
+        </Grid>
+        
     </Grid>
 </Window>
