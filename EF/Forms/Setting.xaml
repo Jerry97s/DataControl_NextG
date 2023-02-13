@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:EF.Forms"
         mc:Ignorable="d"
         Title="Setting" Height="600" Width="800" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterOwner" Loaded="OnLoad">
+    
     <Grid>
         <Grid ShowGridLines="True" Margin="10">
             <Grid.RowDefinitions>
@@ -27,7 +28,9 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
+            
             <Button x:Name="btnClose" Content="닫기" FontSize="20" Margin="10, 15, 10, 15" Grid.Row="7" Grid.Column="6"/>
+            
         </Grid>
     </Grid>
 </Window>
